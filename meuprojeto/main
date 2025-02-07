@@ -1,0 +1,41 @@
+package com.meuprojeto;
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int opcao;
+		Animal animal[] = new Animal[10];
+		
+		do {
+			System.out.println("Digite o que quer fazer:");
+			System.out.println("1-cadastrar animal");
+			System.out.println("2-agendar serviço");
+			System.out.println("3-listar animais");
+			System.out.println("4-sair");
+			opcao = scan.nextInt();
+			
+			switch(opcao){
+			case 1:
+				System.out.println("Digite o nome do animal:");
+				String nome = scan.nextLine();
+				System.out.println("Digite a especie do animal:");
+				String especie = scan.nextLine();
+				System.out.println("Digite a idade do animal:");
+				int idade = scan.nextInt();
+				
+				animal[0] = new Animal(nome,especie,idade);
+			case 2:
+				System.out.println("Digite o nome do animal:");
+				String nomeAnimal = scan.nextLine();
+				System.out.println("Digite o tipo de serviço:");
+				String tipo = scan.nextLine();
+				System.out.println("Digite a data:");
+				String data = scan.nextLine();
+				System.out.println("Digite a hora:");
+				String hora = scan.nextLine();
+				
+				
+			}
+		}while(opcao != 4);
+	}
+}
