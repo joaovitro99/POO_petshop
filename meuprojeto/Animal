@@ -1,0 +1,39 @@
+package com.meuprojeto;
+
+public class Animal {
+	private String nome;
+	private String especie;
+	private int idade;
+	
+	public Animal(String nome, String especie, int idade) {
+		this.nome = nome;
+		this.especie = especie;
+		this.idade = idade;
+	}
+	
+	public String toString() {
+		return "o nome dele é "+this.nome+", a especie e "+this.idade+"e a idade e"+this.idade;
+	}
+	
+	private String getNome() {
+		return this.nome;
+	}
+	private String getEspecie() {
+		return this.especie;
+	}
+	private int getIdade() {
+		return this.idade;
+	}
+	
+	private void setNome(String nome) {
+		this.nome = nome;
+	}
+	private void setEspecie(String especie) {
+		this.especie = especie;
+	}
+	private void setIdade(int idade) {
+		this.idade = idade;
+	}
+	
+	
+}
