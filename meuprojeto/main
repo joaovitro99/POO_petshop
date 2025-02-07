@@ -7,11 +7,12 @@ public class Main {
 		Animal animal[] = new Animal[10];
 		
 		do {
-			System.out.println("Digite o que quer fazer:");
-			System.out.println("1-cadastrar animal");
-			System.out.println("2-agendar serviço");
-			System.out.println("3-listar animais");
-			System.out.println("4-sair");
+			System.out.println("\nMenu:");
+            		System.out.println("1 - Cadastrar Animal");
+            		System.out.println("2 - Agendar Serviço");
+            		System.out.println("3 - Listar Serviços");
+            		System.out.println("4 - Sair");
+            		System.out.print("Escolha uma opção: ");
 			opcao = scan.nextInt();
 			
 			switch(opcao){
@@ -33,9 +34,18 @@ public class Main {
 				String data = scan.nextLine();
 				System.out.println("Digite a hora:");
 				String hora = scan.nextLine();
+			case 3:
+				for(String servico: servico){
+					System.out.println(servico);
+			case 4:
+	                    System.out.println("Saindo...");
+                    	    break;
+               		default:
+                    		System.out.println("Opção inválida.");
 				
 				
 			}
 		}while(opcao != 4);
 	}
+	
 }
