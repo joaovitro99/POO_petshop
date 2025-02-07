@@ -1,0 +1,45 @@
+package com.meuprojeto;
+
+public class Serviço {
+	private String tipo;
+	private String data;
+	private String hora;
+	private String nomeAnimal;
+	
+	public Serviço(String tipo,String data,String hora,String nomeAnimal){
+		this.tipo = tipo;
+		this.data = data;
+		this.hora = hora;
+		this.nomeAnimal = nomeAnimal;
+	}
+	
+	public String toString() {
+		return "o tipo do servico é "+this.tipo+", a data e "+this.data+", a hora e"+this.hora+"e o nome e"+this.nomeAnimal;
+	}
+	
+	private String getNomeAnimal() {
+		return this.nomeAnimal;
+	}
+	private String getTipo() {
+		return this.tipo;
+	}
+	private String getData() {
+		return this.data;
+	}
+	private String getHora() {
+		return this.hora;
+	}
+	private void setNomeAnimal(String nome) {
+		this.nomeAnimal = nome;
+	}
+	private void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	private void setData(String data) {
+		this.data = data;
+	}
+	private void setHora(String hora) {
+		this.hora = hora;
+	}
+
+}
