@@ -16,6 +16,11 @@ public class Serviço {
 	public String toString() {
 		return "o tipo do servico é "+this.tipo+", a data e "+this.data+", a hora e"+this.hora+"e o nome e"+this.nomeAnimal;
 	}
+
+	public static Animal fromString(String linha) {
+    	String[] partes = linha.split(",");
+    	return new Animal(partes[0],partes[1],partes[2],partes[3);
+    	}
 	
 	private String getNomeAnimal() {
 		return this.nomeAnimal;
