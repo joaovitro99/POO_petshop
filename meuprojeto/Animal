@@ -14,6 +14,11 @@ public class Animal {
 	public String toString() {
 		return "o nome dele é "+this.nome+", a especie e "+this.idade+"e a idade e"+this.idade;
 	}
+
+	public static Animal fromString(String linha) {
+    	String[] partes = linha.split(",");
+    	return new Animal(partes[0],partes[1],Integer.parseInt(partes[2]));
+    	}
 	
 	private String getNome() {
 		return this.nome;
