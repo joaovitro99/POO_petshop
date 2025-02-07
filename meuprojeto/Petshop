@@ -1,5 +1,25 @@
 package com.meuprojeto;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Petshop {
+    private <T> List<T> lerDados(String arquivo){
+    	try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(arquivo))){
+    		return (List<T>) ois.readObject();
+    	 } catch (IOException | ClassNotFoundException e) {
+    	 return new ArrayList<>();
+    	 }
+
+    	}
+    
+	
+	private <T> void salvarDados(List<T> dados, String arquivo) {
+	 try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(arquivo))) {
+		 oos.writeObject(dados);
+	 } catch (IOException e) {
+	 e.printStackTrace();
+	 }
+	}
 
 }
