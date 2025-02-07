@@ -23,8 +23,9 @@ public class Main {
 				String especie = scan.nextLine();
 				System.out.println("Digite a idade do animal:");
 				int idade = scan.nextInt();
-				
+				petShop.cadastrarAnimal(nome,especie,idade);
 				animal[0] = new Animal(nome,especie,idade);
+				break
 			case 2:
 				System.out.println("Digite o nome do animal:");
 				String nomeAnimal = scan.nextLine();
@@ -34,18 +35,21 @@ public class Main {
 				String data = scan.nextLine();
 				System.out.println("Digite a hora:");
 				String hora = scan.nextLine();
+				petShop.agendarServico(tipo,data,hora,nomeAnimal);
+				break;
 			case 3:
-				for(String servico: servico){
-					System.out.println(servico);
+				petShop.listarAnimais();
+				break;
 			case 4:
+				petShop.listarServicos();
+				break;
+			case 5:
 	                    System.out.println("Saindo...");
                     	    break;
                		default:
-                    		System.out.println("Opção inválida.");
-				
-				
+                    		System.out.println("Opção inválida.");	
 			}
-		}while(opcao != 4);
+		}while(opcao != 5);
 	}
 	
 }
