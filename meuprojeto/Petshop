@@ -4,6 +4,79 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Petshop {
+    private static final String ARQUIVO_ANIMAIS = "animais.txt";
+    private static final String ARQUIVO_SERVICOS = "servicos.txt";
+    private List<Animal> animais; 
+    private List<Servico> servicos; 
+    public Petshop(){
+    	animais = lerAnimais();
+	servicos = lerServicos();
+    }
+    public void cadastrarAnimal(String nome,String especie, int idade){
+	Animal animal = new Animal(nome,especie,idade);
+	animais.add(animal);
+   }
+    public void cadastrarServico(String tipo,String data, String hora,String nomeAnimal){
+	Servico servico = new Servico(tipo,data,hora,nomeAnimal);
+	servicos.add(servico);
+   }
+    public void listarAnimais(){
+	for(String animal : animais){
+		System.out.println(animal);
+	}
+    }
+    public void listarServicos(){
+	for(String servico : servicos){
+		System.out.println(servico);
+	}
+    }
+    private List<Animal> lerAnimais(){
+	List<Animal> lista = mew ArrayÇist<>();
+	try(BufferedReader br = new BufferedReader(new FileReader(ARQUIVO_ANIMAIS))){
+	    String linha;
+	    while(linha = br.readLine() != null){
+		lista.add(Animal.fromString(linha));
+	    }
+        }catch(IOException e){
+	    System.out.println("nenhum animal encontrado");
+	}
+	return lista;
+    }
+    
+    private List<Animal> lerServicos(){
+	List<Servico> lista = mew ArrayList<>();
+	try(BufferedReader br = new BufferedReader(new FileReader(ARQUIVO_SERVICOS))){
+	    String linha;
+	    while(linha = br.readLine() != null){
+		lista.add(Servico.fromString(linha));
+	    }
+        }catch(IOException e){
+	    System.out.println("nenhum servico encontrado");
+	}
+	return lista;
+    }
+    private void salvarAnimais(){ 
+	try(BufferedWriter bw = new BufferedWriter(new FileWriter(ARQUIVOS_ANIMAIS){
+	   for(Animal aux: animais){
+		bw.write(aux.toString());
+		bw.newLine();
+	   }
+	}catch(IOException e){
+	   e.printStackTrace();
+	}
+		
+    }
+    private void salvarServicos(){ 
+	try(BufferedWriter bw = new BufferedWriter(new FileWriter(ARQUIVOS_SERVICOS){
+	   for(Animal aux: servicos){
+		bw.write(aux.toString());
+		bw.newLine();
+	   }
+	}catch(IOException e){
+	   e.printStackTrace();
+	}
+		
+    }
     private <T> List<T> lerDados(String arquivo){
     	try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(arquivo))){
     		return (List<T>) ois.readObject();
