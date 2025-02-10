@@ -4,7 +4,7 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		int opcao;
-		Animal animal[] = new Animal[10];
+		List<Animal> animais = new ArrayList<>();
 		
 		do {
 			System.out.println("\nMenu:");
@@ -24,8 +24,9 @@ public class Main {
 				System.out.println("Digite a idade do animal:");
 				int idade = scan.nextInt();
 				petShop.cadastrarAnimal(nome,especie,idade);
-				animal[0] = new Animal(nome,especie,idade);
-				break
+				Animal animal = new Animal(nome,especie,idade);
+				animais.add(animal);
+				break;
 			case 2:
 				System.out.println("Digite o nome do animal:");
 				String nomeAnimal = scan.nextLine();
