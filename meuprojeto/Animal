@@ -1,4 +1,5 @@
 package com.meuprojeto;
+package com.meuPetshop;
 
 public class Animal {
 	private String nome;
