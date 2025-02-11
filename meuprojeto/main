@@ -1,11 +1,13 @@
 package com.meuprojeto;
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 public class Main {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		int opcao;
 		List<Animal> animais = new ArrayList<>();
-		
+		List<Serviço> servicos = new ArrayList<>();
 		do {
 			System.out.println("\nMenu:");
             		System.out.println("1 - Cadastrar Animal");
@@ -23,7 +25,6 @@ public class Main {
 				String especie = scan.nextLine();
 				System.out.println("Digite a idade do animal:");
 				int idade = scan.nextInt();
-				petShop.cadastrarAnimal(nome,especie,idade);
 				Animal animal = new Animal(nome,especie,idade);
 				animais.add(animal);
 				break;
@@ -36,19 +37,26 @@ public class Main {
 				String data = scan.nextLine();
 				System.out.println("Digite a hora:");
 				String hora = scan.nextLine();
-				petShop.agendarServico(tipo,data,hora,nomeAnimal);
+				Serviço servico = new Serviço(tipo,data,hora,nomeAnimal);
+				servicos.add(servico);
 				break;
 			case 3:
-				petShop.listarAnimais();
+				for(Animal aux : animais) {
+					System.out.println(aux);
+				}
+				System.out.println("\n");
 				break;
 			case 4:
-				petShop.listarServicos();
+				for(Serviço aux : servicos) {
+					System.out.println(aux);
+				}
+				System.out.println("\n");
 				break;
 			case 5:
-	                    System.out.println("Saindo...");
-                    	    break;
-               		default:
-                    		System.out.println("Opção inválida.");	
+	            System.out.println("Saindo...");
+                break;
+            default:
+                System.out.println("Opção inválida.");	
 			}
 		}while(opcao != 5);
 	}
