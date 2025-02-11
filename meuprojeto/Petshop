@@ -7,7 +7,7 @@ public class Petshop {
     private static final String ARQUIVO_ANIMAIS = "animais.txt";
     private static final String ARQUIVO_SERVICOS = "servicos.txt";
     private List<Animal> animais; 
-    private List<Servico> servicos; 
+    private List<Serviço> servicos; 
     public Petshop(){
     	animais = lerAnimais();
 	servicos = lerServicos();
@@ -17,82 +17,68 @@ public class Petshop {
 	animais.add(animal);
    }
     public void cadastrarServico(String tipo,String data, String hora,String nomeAnimal){
-	Servico servico = new Servico(tipo,data,hora,nomeAnimal);
+	Serviço servico = new Serviço(tipo,data,hora,nomeAnimal);
 	servicos.add(servico);
    }
     public void listarAnimais(){
-	for(String animal : animais){
+	for(Animal animal : animais){
 		System.out.println(animal);
 	}
     }
     public void listarServicos(){
-	for(String servico : servicos){
+	for(Serviço servico : servicos){
 		System.out.println(servico);
 	}
     }
     private List<Animal> lerAnimais(){
-	List<Animal> lista = mew ArrayÇist<>();
+	List<Animal> lista = new ArrayList<>();
 	try(BufferedReader br = new BufferedReader(new FileReader(ARQUIVO_ANIMAIS))){
 	    String linha;
-	    while(linha = br.readLine() != null){
+	    while((linha = br.readLine()) != null){
 		lista.add(Animal.fromString(linha));
 	    }
+	    br.close();
         }catch(IOException e){
 	    System.out.println("nenhum animal encontrado");
 	}
 	return lista;
     }
     
-    private List<Animal> lerServicos(){
-	List<Servico> lista = mew ArrayList<>();
+    private List<Serviço> lerServicos(){
+	List<Serviço> lista = new ArrayList<>();
 	try(BufferedReader br = new BufferedReader(new FileReader(ARQUIVO_SERVICOS))){
 	    String linha;
-	    while(linha = br.readLine() != null){
-		lista.add(Servico.fromString(linha));
+	    while((linha = br.readLine()) != null){
+		lista.add(Serviço.fromString(linha));
 	    }
+	    br.close();
         }catch(IOException e){
 	    System.out.println("nenhum servico encontrado");
 	}
 	return lista;
     }
-    private void salvarAnimais(){ 
-	try(BufferedWriter bw = new BufferedWriter(new FileWriter(ARQUIVOS_ANIMAIS){
+    private void salvarAnimais(List<Animal> animais){ 
+	try(BufferedWriter bw = new BufferedWriter(new FileWriter(ARQUIVO_ANIMAIS))){
 	   for(Animal aux: animais){
 		bw.write(aux.toString());
 		bw.newLine();
 	   }
+	   bw.close();
 	}catch(IOException e){
 	   e.printStackTrace();
 	}
 		
     }
     private void salvarServicos(){ 
-	try(BufferedWriter bw = new BufferedWriter(new FileWriter(ARQUIVOS_SERVICOS){
-	   for(Animal aux: servicos){
+	try(BufferedWriter bw = new BufferedWriter(new FileWriter(ARQUIVO_SERVICOS))){
+	   for(Serviço aux: servicos){
 		bw.write(aux.toString());
 		bw.newLine();
 	   }
+	   bw.close();
 	}catch(IOException e){
 	   e.printStackTrace();
 	}
 		
     }
-    private <T> List<T> lerDados(String arquivo){
-    	try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(arquivo))){
-    		return (List<T>) ois.readObject();
-    	 } catch (IOException | ClassNotFoundException e) {
-    	 return new ArrayList<>();
-    	 }
-
-    	}
-    
-	
-	private <T> void salvarDados(List<T> dados, String arquivo) {
-	 try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(arquivo))) {
-		 oos.writeObject(dados);
-	 } catch (IOException e) {
-	 e.printStackTrace();
-	 }
-	}
-
 }
